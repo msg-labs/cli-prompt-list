@@ -1,4 +1,4 @@
-# cli-nteractive-list
+# cli-prompt-list
 
 ## Installation
 
