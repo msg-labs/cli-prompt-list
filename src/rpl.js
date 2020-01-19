@@ -96,9 +96,9 @@ const rpl = ( search, userPrompt = '> ', pluck = defaultPluck ) =>
         prompt = userPrompt;
 
         setup();
+        write( search.input );
 
         printCandidates( search, pluck );
-
 
         process.stdin.on( 'keypress', ( character, key ) => {
 
