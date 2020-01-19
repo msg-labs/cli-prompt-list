@@ -1,0 +1,49 @@
+name: Creates a new release and publishes to npm on push to master
+
+on:
+  push:
+    branches: master
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - name: Installing dependencies
+      run: npm ci
+    - name: Linting project
+      run: npm run lint
+    - name: Running tests
+      run: npm test
+
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - name: Installing dependencies
+      run: npm ci
+    - name: Setup git user
+      run: |
+        git config --local user.email "miguelsanychez@gmail.com"
+        git config --local user.name "Miguel Sanchez Gonzalez"
+    - name: Releasing
+      run: npm run release
+    - uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+  npm-publish:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        registry-url: https://registry.npmjs.org/
+    - run: npm publish
+      env: 
+        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
