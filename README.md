@@ -50,13 +50,10 @@ type InteractiveList<T> = (
     }
 ) => Promise<T>;
 ```
-
 | Parameter | Type | Default | Description |
-|-|-|
-| candidates | Array | [] | List of elements to search |
-| prompt | string | '> ' | Text to be displayed next to the input |
-| renderLine | function | candidate => candidate | Used to transform the output of each line |
-| searchOptions | Object | { input: '', matchField: candidate => String(
-candidate ), compareFunction: ( a, b )  => matchField( a
-).localeCompare( matchField( b ) ) } | Custom options for the search
-function |
+|-|-|-|-|
+| candidates | Array | `[]` | List of elements to search |
+| prompt | string | `'> '` | Text to be displayed next to the input |
+| renderLine | function | `candidate => candidate` | Used to transform the output of each line |
+| searchOptions | Object | ` { input: '', matchField: candidate => String( candidate ), compareFunction: ( a, b )  => matchField( a).localeCompare( matchField( b ) ) }` | Custom options for the search function |
+
