@@ -1,0 +1,54 @@
+{
+    "name": "@msg-labs/cli-prompt-list",
+    "version": "1.0.0",
+    "description": "A prompt your users for an option with an interactive list",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "lint": "eslint \"**/*.js\" \"*.js\"",
+        "release": "standard-version"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/msg-labs/cli-prompt-list.git"
+    },
+    "keywords": [
+        "ui",
+        "list",
+        "cli"
+    ],
+    "author": {
+        "name": "Miguel Sanchez Gonzalez",
+        "email": "miguelsanychez@gmail.com",
+        "url": "https://miguelsanchezgonzalez.com"
+    },
+    "license": "WTFNMFPL-1.0",
+    "bugs": {
+        "url": "https://github.com/msg-labs/cli-prompt-list/issues"
+    },
+    "homepage": "https://github.com/msg-labs/cli-prompt-list#readme",
+    "devDependencies": {
+        "@msg-labs/eslint-config": "1.5.1",
+        "eslint": "6.7.2",
+        "husky": "3.1.0",
+        "jest": "24.9.0",
+        "lint-staged": "9.5.0",
+        "standard-version": "7.0.1",
+        "@types/jest": "24.0.23"
+    },
+    "dependencies": {
+        "ansi-escapes": "4.3.0",
+        "chalk": "3.0.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run test && lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "npm run lint -- --fix",
+            "git add"
+        ]
+    }
+}
