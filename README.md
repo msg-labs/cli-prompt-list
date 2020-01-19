@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-npm install --save @msg-labs/cli-interative-list
+npm install --save @msg-labs/cli-prompt-list
 ```
 
 ## Usage
