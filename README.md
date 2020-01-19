@@ -11,7 +11,7 @@ npm install --save @msg-labs/cli-prompt-list
 Default functionality:
 
 ```js
-const promptForRepo = require( '@msg-labs/cli-interactive-list' );
+const promptForRepo = require( '@msg-labs/cli-prompt-list' );
 
 const repos = [
   'aredridel/node-bin-gen',
