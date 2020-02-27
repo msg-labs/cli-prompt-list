@@ -28,7 +28,7 @@
     },
     "homepage": "https://github.com/msg-labs/cli-prompt-list#readme",
     "devDependencies": {
-        "@msg-labs/eslint-config": "1.5.1",
+        "@msg-labs/eslint-config": "1.6.0",
         "eslint": "6.7.2",
         "husky": "3.1.0",
         "jest": "24.9.0",
