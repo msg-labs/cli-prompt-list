@@ -1,6 +1,53 @@
 const { getSequence } = require( './utils.js' );
 
+
 describe( 'utils', () => {
+
+    describe( 'escape', () => {
+
+        beforeEach( () => {
+            jest.resetModules();
+        } );
+
+        it( 'returns the value if no args provided', () => {
+
+            expect.assertions( 1 );
+
+            const write = jest.fn();
+
+            jest.doMock( 'process', () => ( {
+                stdout: {
+                    write
+                }
+            } ) );
+            jest.doMock( 'ansi-escapes', () => ( {
+                test: 'value'
+            } ) );
+
+            const { escape } = require( './utils.js' );
+
+            escape( 'test' );
+
+            expect( write ).toHaveBeenCalledWith( 'value' );
+
+        } );
+
+        it( 'passes the parameters to the escape method', () => {
+            expect.assertions( 1 );
+
+            const test = jest.fn();
+
+            jest.doMock( 'ansi-escapes', () => ( { test } ) );
+
+            const { escape } = require( './utils.js' );
+
+            escape( 'test', 1, 3, 100 );
+
+            expect( test ).toHaveBeenCalledWith( 1, 3, 100 );
+
+        } );
+
+    } );
 
     describe( 'getSequence', () => {
 
