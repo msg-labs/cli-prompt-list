@@ -204,5 +204,25 @@ describe( 'generic search', () => {
 
     } );
 
+    it( 'doesn\'t limit the output in absence of limit', () => {
+
+        expect.assertions( 1 );
+        const candidates = [ 'first', 'second', 'second-to-last' ];
+        const result = search( candidates );
+
+        expect( result.candidates ).toStrictEqual( [ ...candidates ] );
+
+    } );
+
+    it( 'limits the output if a limit is given', () => {
+
+        expect.assertions( 1 );
+        const candidates = [ 'first', 'second', 'second-to-last' ];
+        const result = search( candidates, { limit: 1 } );
+
+        expect( result.candidates ).toStrictEqual( [ 'first' ] );
+
+    } );
+
 } );
 

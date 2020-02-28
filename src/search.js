@@ -33,7 +33,8 @@ const search = ( candidates = [], options = {} ) => {
     const {
         input = '',
         matchField,
-        compareFunction
+        compareFunction,
+        limit
     } = options;
 
     return {
@@ -55,7 +56,8 @@ const search = ( candidates = [], options = {} ) => {
                 ),
                 compareFunction || defaultSortFunction( matchField || defaultMatchField ),
                 !compareFunction && matchField ? matchField : defaultMatchField
-            );
+            )
+                .slice( 0, limit );
         },
 
         set input ( value ) {
