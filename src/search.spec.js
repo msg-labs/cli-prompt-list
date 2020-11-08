@@ -224,5 +224,15 @@ describe( 'generic search', () => {
 
     } );
 
+    it( 'skips the sorting phase if sortCandidates is false', () => {
+
+        expect.assertions( 1 );
+        const candidates = [ 'xyz', 'abc', 'sdf' ];
+        const result = search( candidates, { sortCandidates: false } );
+
+        expect( result.candidates ).toStrictEqual( [ 'xyz', 'abc', 'sdf' ] );
+
+    } );
+
 } );
 
