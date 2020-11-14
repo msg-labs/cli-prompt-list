@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/msg-labs/cli-prompt-list/compare/v1.1.3...v1.2.0) (2020-11-14)
+
+
+### Features
+
+* allows users to avoid automatic filtering ([55a7e00](https://github.com/msg-labs/cli-prompt-list/commit/55a7e00d27e24005f5abf67af772df6a152be7bf))
+* allows users to avoid automatic filtering ([#6](https://github.com/msg-labs/cli-prompt-list/issues/6)) ([8457b28](https://github.com/msg-labs/cli-prompt-list/commit/8457b281992f3f05cc0ff04268baa629feeef22f))
+
 ### [1.1.3](https://github.com/msg-labs/cli-prompt-list/compare/v1.1.2...v1.1.3) (2020-11-05)
 
 ### [1.1.2](https://github.com/msg-labs/cli-prompt-list/compare/v1.1.1...v1.1.2) (2020-04-11)
