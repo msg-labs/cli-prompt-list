@@ -11,7 +11,7 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
  *
  */
-const sortCandidates = ( candidates, compareFunction ) => candidates
+const defaultSortCandidates = ( candidates, compareFunction ) => candidates
     .sort( compareFunction );
 
 const filterCandidates = ( input, candidates, matchField ) => candidates
@@ -21,7 +21,7 @@ const filterCandidates = ( input, candidates, matchField ) => candidates
 
 const defaultMatchField = candidate => String( candidate );
 
-const defaultSortFunction = matchField => ( a, b ) => matchField( a )
+const defaultCompareFunction = matchField => ( a, b ) => matchField( a )
     .localeCompare( matchField( b ) );
 
 const deleteStart = 0;
@@ -34,7 +34,8 @@ const search = ( candidates = [], options = {} ) => {
         input = '',
         matchField,
         compareFunction,
-        limit
+        limit,
+        sortCandidates = true
     } = options;
 
     return {
@@ -48,16 +49,21 @@ const search = ( candidates = [], options = {} ) => {
         },
 
         get candidates () {
-            return sortCandidates(
-                filterCandidates(
-                    this.input,
-                    this.searchCandidates,
-                    matchField || defaultMatchField
-                ),
-                compareFunction || defaultSortFunction( matchField || defaultMatchField ),
-                !compareFunction && matchField ? matchField : defaultMatchField
-            )
-                .slice( 0, limit );
+            let result = filterCandidates(
+                this.input,
+                this.searchCandidates,
+                matchField || defaultMatchField
+            );
+
+            if ( sortCandidates ) {
+                result = defaultSortCandidates(
+                    result,
+                    compareFunction || defaultCompareFunction( matchField || defaultMatchField ),
+                    !compareFunction && matchField ? matchField : defaultMatchField
+                );
+            }
+
+            return result.slice( 0, limit );
         },
 
         set input ( value ) {

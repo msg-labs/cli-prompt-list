@@ -47,7 +47,8 @@ type InteractiveList<T> = (
             a?: T,
             b?: T
         ) => boolean,
-        limit?: number
+        limit?: number,
+        sortCandidates?: boolean
     }
 ) => Promise<T>;
 ```
@@ -63,4 +64,5 @@ type InteractiveList<T> = (
 | searchOptions.matchField | function | `candidate => String( candidate )` | Selects which field will be used in the compare function |
 | searchOptions.compareFunction | function | `( a, b )  => matchField( a).localeCompare( matchField( b ) )` | Defines how fields will be sorted after the search |
 | searchOptions.limit | number | undefined | limits the amount of candidates in the output |
+| searchOptions.sortCandidates | boolean | true | alphabetically sorts the candidates |
 
